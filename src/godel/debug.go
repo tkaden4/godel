@@ -5,11 +5,18 @@ import (
 	"os"
 )
 
-const REGISTER_OFFSET uint16 = 2047
+const MEMORY_SIZE uint16 = 256
+const REGISTER_OFFSET uint16 = MEMORY_SIZE - 1
 
 type Debug struct {
-	memory [2048]uint8
+	memory [MEMORY_SIZE]uint8
 	debug  func(do func())
+}
+
+func CreateDebug() *Debug {
+	ret := &Debug{}
+	ret.Loud()
+	return ret
 }
 
 func (self *Debug) Quiet() {

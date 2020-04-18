@@ -2,6 +2,9 @@ package main
 
 const IP uint8 = 31
 const PO uint8 = 30
+const EQ uint8 = 29
+const LT uint8 = 28
+const GT uint8 = 27
 
 type Memory interface {
 	SetMemory(location uint16, value uint8) error
