@@ -15,15 +15,16 @@ func Halt(vm VM) error {
 }
 
 func PutImmediate(vm VM) error {
-	register, _ := ReadImmediateUint8(vm)
+	location, _ := ReadImmediateUint16(vm)
 	value, _ := ReadImmediateUint16(vm)
-	vm.Registers().SetRegister(register, value)
+	vm.Memory().SetMemory(location, uint8((value&0xff00)>>8))
+	vm.Memory().SetMemory(location+1, uint8(value))
 	return nil
 }
 
 func Cout(vm VM) error {
-	register, _ := ReadImmediateUint8(vm)
-	value, _ := vm.Registers().GetRegister(register)
+	location, _ := ReadImmediateUint16(vm)
+	value, _ := vm.Memory().GetMemory(location)
 	fmt.Print(string(value))
 	return nil
 }

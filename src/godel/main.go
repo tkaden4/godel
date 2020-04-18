@@ -3,19 +3,10 @@ package main
 func main() {
 	vm := &Debug{}
 	program := Program{}
-	program.Put(1, uint16('H'))
-	program.Cout(1)
-	program.Put(1, uint16('e'))
-	program.Cout(1)
-	program.Put(1, uint16('l'))
-	program.Cout(1)
-	program.Put(1, uint16('l'))
-	program.Cout(1)
-	program.Put(1, uint16('o'))
-	program.Cout(1)
-	program.Put(1, uint16('\n'))
-	program.Cout(1)
+	program.Put(100, uint16('H'))
+	program.Cout(101)
 	copy(vm.memory[:], program.Bytes)
+	// vm.Loud()
 	vm.Quiet()
 	Run(vm)
 }
