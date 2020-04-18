@@ -1,3 +1,3 @@
 # godel
 
-A spicy test vm
+A tiny VM project in GoLang
