@@ -31,6 +31,6 @@ func ReadImmediateUint16(vm VM) (uint16, error) {
 	leByte, _ := ReadImmediateUint8(vm)
 	var be uint16 = uint16(beByte)
 	var le uint16 = uint16(leByte)
-	val := (be << 8 & le)
+	val := ((be << 8) | le)
 	return val, nil
 }
